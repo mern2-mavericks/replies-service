@@ -5,11 +5,27 @@ import ReplyRepository from "../repositories/reply.repository";
 const ReplyServices = {
   getAll: async () => {
     try {
-    } catch (error) {}
+      const allReplies = await ReplyRepository.getAll();
+      if (!allReplies) {
+        throw { name: "NotFound" };
+      }
+      return allReplies;
+    } catch (error) {
+      console.log("Service Error:", error);
+      throw error;
+    }
   },
-  getOne: async () => {
+  getOne: async (id: string) => {
     try {
-    } catch (error) {}
+      const singleTodo = await ReplyRepository.getOne(id);
+      if (!singleTodo) {
+        throw { name: "NotFound" };
+      }
+      return singleTodo;
+    } catch (error) {
+      console.log("Service Error:", error);
+      throw error;
+    }
   },
   create: async (newReply: IReply) => {
     try {
@@ -20,18 +36,22 @@ const ReplyServices = {
       return await ReplyRepository.create(newReply);
     } catch (error) {
       console.log("Service Error:", error);
-      throw error; 
+      throw error;
     }
   },
   update: async () => {
     try {
     } catch (error) {
       console.log("Service Error:", error);
+      throw error;
     }
   },
   delete: async () => {
     try {
-    } catch (error) {}
+    } catch (error) {
+      console.log("Service Error:", error);
+      throw error;
+    }
   },
 };
 

@@ -4,15 +4,17 @@ import { IReply } from "../entities/interface";
 import { Reply } from "../models/reply.schema";
 
 const ReplyRepository = {
-  getAll: async (next: NextFunction) => {
+  getAll: async () => {
     try {
+      return await Reply.find();
     } catch (error) {
       console.log(`Repository Error: ${error}`);
       throw error;
     }
   },
-  getOne: async (next: NextFunction) => {
+  getOne: async (id: string) => {
     try {
+      return await Reply.findById(id);
     } catch (error) {
       console.log(`Repository Error: ${error}`);
       throw error;
@@ -27,14 +29,14 @@ const ReplyRepository = {
       throw error;
     }
   },
-  update: async (next: NextFunction) => {
+  update: async () => {
     try {
     } catch (error) {
       console.log(`Repository Error: ${error}`);
       throw error;
     }
   },
-  delete: async (next: NextFunction) => {
+  delete: async () => {
     try {
     } catch (error) {
       console.log(`Repository Error: ${error}`);

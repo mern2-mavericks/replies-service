@@ -1,12 +1,16 @@
-### Create todo
+### Create Reply
 POST http://localhost:8000/replies
 Content-Type: application/json
 
 {
     "userId": "66b636424b1aba8d8707df4b",
-    "content": "bisa yura",
+    "content": "test error 1",
     "parentType": "thread",
     //"parentId": "44526424b1aba8d8707df4b"
 }
 
-# userId, content, parentType, parentId
+###Get All Replies
+GET http://localhost:8000/replies
+
+###Get One Reply
+GET http://localhost:8000/replies/66c1a65797f0688bdec10f20
