@@ -53,8 +53,6 @@ const ReplyController = {
     next: NextFunction
   ) => {
     try {
-      console.log(req.body);
-
       const { content } = req.body;
       const replyId = req.params.id;
       const updateReply = await ReplyServices.update(replyId, content);
@@ -72,6 +70,11 @@ const ReplyController = {
     next: NextFunction
   ) => {
     try {
+      const replyId = req.params.id;
+      const deleteReply = await ReplyServices.delete(replyId);
+      return res
+        .status(200)
+        .json({ message: "Delete Todo Success", deletedData: deleteReply });
     } catch (error) {
       console.log(`Controller error : ${error}`);
       next(error);

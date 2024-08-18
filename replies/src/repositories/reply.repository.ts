@@ -45,8 +45,9 @@ const ReplyRepository = {
       throw error;
     }
   },
-  delete: async () => {
+  delete: async (id: string) => {
     try {
+      return await Reply.findByIdAndDelete(id);
     } catch (error) {
       console.log(`Repository Error: ${error}`);
       throw error;

@@ -50,8 +50,13 @@ const ReplyServices = {
       throw error;
     }
   },
-  delete: async () => {
+  delete: async (id: string) => {
     try {
+      const deleteTodo = await ReplyRepository.delete(id);
+      if (!deleteTodo) {
+        throw { name: "NotFound" };
+      }
+      return deleteTodo;
     } catch (error) {
       console.log("Service Error:", error);
       throw error;
