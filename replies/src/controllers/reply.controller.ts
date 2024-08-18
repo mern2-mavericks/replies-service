@@ -1,4 +1,5 @@
 import type { Request, Response } from "express";
+import ReplyServices from "../services/reply.service";
 
 const ReplyController = {
   handleGetAllReplies: async (req: Request, res: Response) => {
@@ -11,6 +12,8 @@ const ReplyController = {
   },
   handleCreateReply: async (req: Request, res: Response) => {
     try {
+      const { userId, content, parentType, parentId } = req.body;
+      const newReply = await ReplyServices.create(req.body);
     } catch (error) {}
   },
   handleUpdateReply: async (req: Request, res: Response) => {

@@ -44,6 +44,10 @@ const errorHandler = async (
       statusCode = 404;
       message = "Data not found";
       break;
+    case "Incomplete":
+      statusCode = 400;
+      message = "Data not complete!";
+      break;
     default:
       statusCode = 500;
       message = "Internal Server Error";

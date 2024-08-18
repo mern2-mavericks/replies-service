@@ -8,5 +8,3 @@ const replySchema = new Schema({
 });
 
 export const Reply = model("Reply", replySchema);
-
-//id, userId, content, parentType (antara thread atau blog), parentId
