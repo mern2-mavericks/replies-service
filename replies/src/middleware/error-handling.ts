@@ -7,35 +7,12 @@ const errorHandler = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  console.log(error);
+  console.log("Error Handler:", error);
 
   let statusCode: number = 0;
   let message: string = "";
 
   switch (error.name) {
-    // case "SequelizeValidationError":
-    // case "SequelizeUniqueConstraintError":
-    //   statusCode = 400;
-    //   message = error.errors ? error.errors[0].message : "Validation error";
-    //   break;
-    // case "EmailRequired":
-    //   statusCode = 400;
-    //   message = "Email is required";
-    //   break;
-    // case "PasswordRequired":
-    //   statusCode = 400;
-    //   message = "Password is required";
-    //   break;
-    // case "InvalidLogin":
-    //   statusCode = 401;
-    //   message = "Invalid email/password";
-    //   break;
-    // case "InvalidToken":
-    //   statusCode = 401;
-    //   message = "Invalid token";
-    //   break;
-    // case "Forbidden":
-    // case "JsonWebTokenError":
     case "NotAuthorized":
       statusCode = 403;
       message = "You are not authorized";

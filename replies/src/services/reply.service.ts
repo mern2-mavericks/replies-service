@@ -19,12 +19,15 @@ const ReplyServices = {
       }
       return await ReplyRepository.create(newReply);
     } catch (error) {
-      console.log(error);
+      console.log("Service Error:", error);
+      throw error; 
     }
   },
   update: async () => {
     try {
-    } catch (error) {}
+    } catch (error) {
+      console.log("Service Error:", error);
+    }
   },
   delete: async () => {
     try {

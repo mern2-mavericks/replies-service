@@ -1,26 +1,52 @@
-import type { Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import ReplyServices from "../services/reply.service";
 
 const ReplyController = {
-  handleGetAllReplies: async (req: Request, res: Response) => {
+  handleGetAllReplies: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
     } catch (error) {}
   },
-  handleGetSingleReply: async (req: Request, res: Response) => {
+  handleGetSingleReply: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
     } catch (error) {}
   },
-  handleCreateReply: async (req: Request, res: Response) => {
+  handleCreateReply: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
       const { userId, content, parentType, parentId } = req.body;
       const newReply = await ReplyServices.create(req.body);
-    } catch (error) {}
+      return res
+        .status(200)
+        .json({ message: "Create reply Success", data: newReply });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
   },
-  handleUpdateReply: async (req: Request, res: Response) => {
+  handleUpdateReply: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
     } catch (error) {}
   },
-  handleDeleteReply: async (req: Request, res: Response) => {
+  handleDeleteReply: async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     try {
     } catch (error) {}
   },

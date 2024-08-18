@@ -1,0 +1,12 @@
+### Create todo
+POST http://localhost:8000/replies
+Content-Type: application/json
+
+{
+    "userId": "66b636424b1aba8d8707df4b",
+    "content": "bisa yura",
+    "parentType": "thread",
+    //"parentId": "44526424b1aba8d8707df4b"
+}
+
+# userId, content, parentType, parentId
