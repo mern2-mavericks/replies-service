@@ -29,8 +29,17 @@ const ReplyRepository = {
       throw error;
     }
   },
-  update: async () => {
+  update: async (id: string, content: string) => {
     try {
+      const updateReply = await Reply.findByIdAndUpdate(
+        id,
+        { content },
+        { new: true }
+      );
+      if (!updateReply) {
+        throw { name: "NotFound" };
+      }
+      return updateReply;
     } catch (error) {
       console.log(`Repository Error: ${error}`);
       throw error;

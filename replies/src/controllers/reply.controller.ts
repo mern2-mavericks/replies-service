@@ -53,6 +53,14 @@ const ReplyController = {
     next: NextFunction
   ) => {
     try {
+      console.log(req.body);
+
+      const { content } = req.body;
+      const replyId = req.params.id;
+      const updateReply = await ReplyServices.update(replyId, content);
+      return res
+        .status(200)
+        .json({ message: "Update Reply Success", data: updateReply });
     } catch (error) {
       console.log(`Controller error : ${error}`);
       next(error);

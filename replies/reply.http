@@ -14,3 +14,11 @@ GET http://localhost:8000/replies
 
 ###Get One Reply
 GET http://localhost:8000/replies/66c1a65797f0688bdec10f20
+
+### Update Reply
+PATCH http://localhost:8000/replies/66c1a65797f0688bdec10f20
+Content-Type: application/json
+
+{
+    "content": "Poor insight bang"
+}

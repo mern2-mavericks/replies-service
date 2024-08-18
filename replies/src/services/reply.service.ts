@@ -39,8 +39,12 @@ const ReplyServices = {
       throw error;
     }
   },
-  update: async () => {
+  update: async (replyId: string, newContent: string) => {
     try {
+      if (!newContent) {
+        throw { name: "Incomplete" };
+      }
+      return await ReplyRepository.update(replyId, newContent);
     } catch (error) {
       console.log("Service Error:", error);
       throw error;
